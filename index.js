@@ -45,12 +45,59 @@ var oldestCustomer = function(array) {
 };
 
 var youngestCustomer;
+youngestCustomer = function(customers) {
+    if (customers.length === 0) {
+      return '';
+    }
+    let youngestAge = Infinity;
+    let youngestName = '';
+    for (let i = 0; i < customers.length; i++) {
+      if (customers[i].age < youngestAge) {
+        youngestAge = customers[i].age;
+        youngestName = customers[i].name;
+      }
+    }
+    return youngestName;
+  };
 
 var averageBalance;
+averageBalance = function (customers) {
+  if (customers.length === 0) {
+    return 0;
+  }
+  let totalBalance = 0;
+  for (let i = 0; i < customers.length; i++) {
+    totalBalance += customers[i].balance;
+  }
+  return totalBalance / customers.length;
+};
 
-var firstLetterCount;
+var firstLetterCount = function(customers, letter) {
+    let count = 0;
+    for (let i = 0; i < customers.length; i++) {
+      if (customers[i].name.charAt(0).toLowerCase() === letter.toLowerCase()) {
+        count++;
+      }
+    }
+    return count;
+  };
 
 var friendFirstLetterCount;
+friendFirstLetterCount = function (customers, customer, letter) {
+    let count = 0;
+    for (let i = 0; i < customers.length; i++) {
+      if (customers[i].name === customer.name) {
+        const friends = customers[i].friends;
+        for (let j = 0; j < friends.length; j++) {
+          if (friends[j].name.charAt(0).toLowerCase() === letter.toLowerCase()) {
+            count++;
+          }
+        }
+        break;
+      }
+    }
+    return count;
+  };
 
 var friendsCount;
 
